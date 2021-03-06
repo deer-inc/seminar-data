@@ -50,7 +50,6 @@ const eventParticipationUrl =
             }
           }
         );
-
         const events = Object.values(
           document.getElementsByClassName('event_list')
         ).map((event) => {
