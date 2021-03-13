@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node src/**",
-    "s": "ts-node-dev --respawn src/**"
+    "start": "ts-node src/index.ts",
+    "s": "ts-node-dev --respawn src/index.ts"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@types/puppeteer": "^5.4.3",
+    "csv-writer": "^1.6.0",
+    "fs": "0.0.1-security",
     "puppeteer": "^8.0.0"
   },
   "devDependencies": {
