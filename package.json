@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/puppeteer": "^5.4.3",
+    "encoding-japanese": "^1.0.30",
     "puppeteer": "^8.0.0"
   },
   "devDependencies": {
