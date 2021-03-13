@@ -18,10 +18,12 @@ interface eventsData {
   ownerURL: string;
 };
 
-const Scraping = (eventParticipationUrl: string, csvFireName:string) => {
+const Scraping = (eventURL: string, csvFireName:string) => {
   (async () => {
     const browser: puppeteer.Browser = await puppeteer.launch({ headless: true });
     const page: puppeteer.Page = await browser.newPage();
+
+    const eventParticipationUrl = eventURL + 'participation/';
 
     await page.goto(eventParticipationUrl, {
       waitUntil: 'domcontentloaded',
