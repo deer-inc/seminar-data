@@ -18,7 +18,7 @@ interface eventsData {
   ownerURL: string;
 };
 
-const Scraping = (targetURL: string, csvFireName:string) => {
+const Scraping = (targetURL: string, csvFireName: string, indexNum: number) => {
   (async () => {
     const browser: puppeteer.Browser = await puppeteer.launch({ headless: true });
     const page: puppeteer.Page = await browser.newPage();
@@ -157,7 +157,7 @@ const Scraping = (targetURL: string, csvFireName:string) => {
 
     const userDataWithStatus = userData.map((user, i) => {
       return {
-        index: i + 1,
+        index: i + indexNum,
         status: userList[i].status,
         ...user,
       }
@@ -177,29 +177,19 @@ const Scraping = (targetURL: string, csvFireName:string) => {
           owner: event.owner,
           ownerURL: event.ownerURL
         }
-        if(i === 0) {
-          return formatUserData.push({
-            index: user.index,
-            status: user.status,
-            userName: user.userName,
-            userURL: user.userURL,
-            profileMessage: user.profileMessage,
-            Twitter: user.Twitter,
-            GitHub: user.GitHub,
-            ...eventData
-          })
-        } else {
-          return formatUserData.push({
-            index: '',
-            status: '',
-            userName: '',
-            userURL: '',
-            profileMessage: '',
-            Twitter: '',
-            GitHub: '',
-            ...eventData
-          })
+        const profileData: any = {
+          index: user.index,
+          status: user.status,
+          userName: user.userName,
+          userURL: user.userURL,
+          profileMessage: user.profileMessage,
+          Twitter: user.Twitter,
+          GitHub: user.GitHub
         }
+        return formatUserData.push({
+          ...profileData,
+          ...eventData
+        });
       })
     });
 
